@@ -58,7 +58,7 @@ class Master extends React.Component {
 
   drop = (i,j) => { 
     console.log(this.state.master);
-    if(currentRow == i) {
+    if(currentRow === i) {
       let a = this.state.codebreaker.slice(); 
       a[i][j] = colour;
       this.setState({codebreaker : a});
@@ -72,7 +72,7 @@ class Master extends React.Component {
     let usedMaster = [];
     for(let x=0;x<4;x++){
       for(let y=0;y<4;y++){
-        if(this.state.master[x] == this.state.codebreaker[currentRow][y] && x==y) {
+        if(this.state.master[x] === this.state.codebreaker[currentRow][y] && x===y) {
           countRed++;
           usedMaster.push(x);
         }
@@ -81,7 +81,7 @@ class Master extends React.Component {
 
     for(let a=0;a<4;a++) {
       for(let b=0;b<4;b++){
-        if(this.state.master[a] == this.state.codebreaker[currentRow][b] && a !== b && !usedMaster.includes(a)) {
+        if(this.state.master[a] === this.state.codebreaker[currentRow][b] && a !== b && !usedMaster.includes(a)) {
           countBlack++;
           usedMaster.push(a);
         }
@@ -99,17 +99,17 @@ class Master extends React.Component {
       tempHintArray[currentRow][i] = 'black';
     }
     this.setState({hintarray : tempHintArray});
-    if(countRed == 4) {
+    if(countRed === 4) {
       this.setState({"gameMode": "win"});
     }
     currentRow++;
-    if (currentRow == 8) {
+    if (currentRow === 8) {
       this.setState({gameMode: "lost"});
     }
   }
 
   render() {
-    if (this.state.gameMode == 'win') {
+    if (this.state.gameMode === 'win') {
       return (
         <div id='game-result'>
           <p id='victory'>Victory 🎉</p>
@@ -117,7 +117,7 @@ class Master extends React.Component {
         </div>
       )
     }
-    if (this.state.gameMode == 'lost') {
+    if (this.state.gameMode === 'lost') {
       return (
         <div id='game-result'>
           <p id='victory'>Loss :(</p>
